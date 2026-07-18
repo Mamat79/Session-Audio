@@ -1,0 +1,27 @@
+# Session Audio - fichiers generes localement
+
+# Journaux
+Logs/
+../Logs/AudioLive_*.log
+AudioLive_*.log
+
+# Etat de session local
+Audio-Live.state.json
+
+# Sauvegardes locales generees par le script ou Codex
+*.bak-*
+*.manualbak-*
+*.safety-*
+
+# Rapports/exports de test
+test-output/
+fixtures/generated/
+benchmarks/output/
+delivery-test/
+*.tmp
+*.temp
+
+# Caches
+.cache/
+cache/
+__pycache__/
