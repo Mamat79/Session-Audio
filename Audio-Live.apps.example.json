@@ -1,0 +1,524 @@
+{
+  "audioPlan": {
+    "name": "Mode Audio",
+    "expectedGuid": "0155f4f8-4a69-4c09-9c16-62ee882a2e95",
+    "powFile": "Mode_Audio.pow"
+  },
+  "logsFolder": "Logs",
+  "stopServices": [
+    {
+      "name": "Tailscale",
+      "displayName": "Tailscale",
+      "enabled": false
+    }
+  ],
+  "services": [
+    {
+      "name": "Tailscale",
+      "displayName": "Tailscale",
+      "action": "Stop",
+      "enabled": false,
+      "description": "VPN maillage. A arreter si tu veux eviter les tunnels reseau pendant une session audio."
+    },
+    {
+      "name": "nordvpn-service",
+      "displayName": "NordVPN",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Service VPN NordVPN. Peut ajouter des interfaces reseau et perturber certains flux audio reseau."
+    },
+    {
+      "name": "NordUpdaterService",
+      "displayName": "NordVPN Updater",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Mise a jour NordVPN. Peu utile pendant une session critique."
+    },
+    {
+      "name": "Synology Drive VSS Service x64",
+      "displayName": "Synology Drive VSS",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Composant Synology Drive. Peut declencher de la synchro ou de l'activite disque."
+    },
+    {
+      "name": "DbxSvc",
+      "displayName": "Dropbox Service",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Service Dropbox. Candidat a l'arret si tu veux limiter les synchronisations cloud."
+    },
+    {
+      "name": "WSearch",
+      "displayName": "Windows Search",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Indexation Windows. Peut generer de l'activite disque en arriere-plan."
+    },
+    {
+      "name": "SysMain",
+      "displayName": "SysMain",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Cache et prechargement Windows. A tester, parfois utile, parfois bruyant pour l'audio."
+    },
+    {
+      "name": "DiagTrack",
+      "displayName": "Telemetrie Windows",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Telemetrie Windows. Peu utile pendant une session audio."
+    },
+    {
+      "name": "DoSvc",
+      "displayName": "Optimisation de livraison",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Optimisation de livraison Windows Update. Peut utiliser disque et reseau."
+    },
+    {
+      "name": "UsoSvc",
+      "displayName": "Orchestrateur Windows Update",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Orchestration Windows Update. A couper seulement pendant une session courte, puis restaurer."
+    },
+    {
+      "name": "wuauserv",
+      "displayName": "Windows Update",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Windows Update. A couper pendant une session critique, puis restaurer."
+    },
+    {
+      "name": "PhoneSvc",
+      "displayName": "Service telephonique",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Fonctions telephonie Windows. Generalement inutile pour une session audio."
+    },
+    {
+      "name": "ss_conn_service",
+      "displayName": "Samsung Mobile Connectivity",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Connectivite mobile Samsung. Peut etre arrete si aucun telephone n'est requis."
+    },
+    {
+      "name": "ss_conn_service2",
+      "displayName": "Samsung Mobile Connectivity V2",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Connectivite mobile Samsung V2. Peut etre arrete si aucun telephone n'est requis."
+    },
+    {
+      "name": "Spooler",
+      "displayName": "Spouleur impression",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Impression Windows. Peut etre coupe si tu n'imprimes pas pendant la session."
+    },
+    {
+      "name": "DellTechHub",
+      "displayName": "Dell TechHub",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Service Dell. Candidat a l'arret temporaire si tu veux limiter les outils constructeur."
+    },
+    {
+      "name": "SupportAssistAgent",
+      "displayName": "Dell SupportAssist",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Dell SupportAssist. Peut lancer diagnostics ou controles en arriere-plan."
+    },
+    {
+      "name": "OptionsPlusUpdaterService",
+      "displayName": "Logi Options Updater",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Mise a jour Logitech Options. Peu utile pendant une session audio."
+    },
+    {
+      "name": "vmcompute",
+      "displayName": "Hyper-V Host Compute",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Hyper-V. A couper seulement si Docker, WSL ou machines virtuelles ne servent pas pendant la session."
+    },
+    {
+      "name": "WSLService",
+      "displayName": "WSL Service",
+      "action": "Stop",
+      "enabled": false,
+      "description": "WSL. A couper seulement si aucun outil Linux/Dev n'est necessaire pendant la session."
+    },
+    {
+      "name": "hns",
+      "displayName": "Host Network Service",
+      "action": "Stop",
+      "enabled": false,
+      "description": "Reseau hote Windows pour WSL/Hyper-V/Docker. A couper seulement si ces outils ne servent pas."
+    }
+  ],
+  "apps": [
+    {
+      "name": "TASCAM UH-7000 Mixer",
+      "category": "Interfaces audio",
+      "path": "C:\\Windows\\usb-audio.deTascamUH7000\\CPL_UH7000.EXE",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "Total Mix 2",
+      "category": "Interfaces audio",
+      "path": "C:\\Program Files\\RME\\Fireface\\TotalMixFX_x64.exe",
+      "delaySeconds": 2,
+      "enabled": false
+    },
+    {
+      "name": "Voicemeeter Banana",
+      "category": "Interfaces audio",
+      "path": "C:\\Program Files (x86)\\VB\\Voicemeeter\\voicemeeterpro_x64.exe",
+      "delaySeconds": 6,
+      "enabled": false
+    },
+    {
+      "name": "Dante Controller",
+      "category": "Reseau audio",
+      "path": "C:\\Program Files\\Audinate\\Dante Controller\\DanteController.exe",
+      "delaySeconds": 4,
+      "enabled": false
+    },
+    {
+      "name": "AgoraController",
+      "category": "Reseau audio",
+      "path": "C:\\Program Files\\AgoraController\\AgoraController.exe",
+      "delaySeconds": 4,
+      "enabled": false
+    },
+    {
+      "name": "Milan Manager",
+      "category": "Reseau audio",
+      "path": "C:\\Program Files\\Milan Manager\\MilanManager.exe",
+      "delaySeconds": 6,
+      "enabled": false
+    },
+    {
+      "name": "Net Set Man",
+      "category": "Reseau audio",
+      "path": "C:\\Program Files (x86)\\NetSetMan\\netsetman.exe",
+      "delaySeconds": 1,
+      "enabled": false
+    },
+    {
+      "name": "Rustdesk",
+      "category": "Reseau audio",
+      "path": "C:\\Program Files\\RustDesk\\rustdesk.exe",
+      "delaySeconds": 1,
+      "enabled": false
+    },
+    {
+      "name": "dLive Director",
+      "category": "Consoles",
+      "path": "C:\\Program Files\\Allen & Heath\\dLive Director 2.12\\dLive Director.exe",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "Avantis Director",
+      "category": "Consoles",
+      "path": "C:\\Program Files\\Allen & Heath\\Avantis Director 1.34\\Avantis Director.exe",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "Ql Editor",
+      "category": "Consoles",
+      "path": "C:\\Program Files (x86)\\Yamaha\\QL Editor\\ql_editor.exe",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "Cl Editor",
+      "category": "Consoles",
+      "path": "C:\\Program Files (x86)\\Yamaha\\CL Editor\\cl_editor.exe",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "Lake Controller",
+      "category": "Processeurs",
+      "path": "C:\\Program Files (x86)\\Lake\\Lake Controller v8.1.7\\Lake Controller.exe",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "Powersoft",
+      "category": "Processeurs",
+      "path": "C:\\Program Files\\Powersoft\\ArmoniaPlus\\ArmoniaPlus.exe",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "L-Manager",
+      "category": "Processeurs",
+      "path": "C:\\Program Files (x86)\\L-Acoustics\\LA Network Manager 2026.1\\bin\\LA Network Manager 2026.1.exe",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "L-ISA Control",
+      "category": "Processeurs",
+      "path": "C:\\Program Files\\L-Acoustics\\L-ISA Controller\\L-ISA Controller.exe",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "Fohhn",
+      "category": "Processeurs",
+      "path": "C:\\Program Files\\Fohhn Audio AG\\Fohhn Audio Soft 6.6.1\\FohhnAudioSoft.exe",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "R1 V3",
+      "category": "Processeurs",
+      "path": "C:\\Program Files\\dbaudio\\R1 V3\\R1_V3.exe",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "LiveTrax",
+      "category": "Enregistrement",
+      "path": "C:\\Program Files\\LiveTrax2\\bin\\LiveTrax.exe",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "Mixbus10",
+      "category": "Enregistrement",
+      "path": "C:\\Program Files\\Mixbus10\\bin\\Mixbus.exe",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "Smaart",
+      "category": "Mesure",
+      "path": "C:\\Program Files (x86)\\Smaart 8\\Smaart.exe",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "Live Capture",
+      "category": "Enregistrement",
+      "path": "C:\\Program Files (x86)\\Live-Capture Pro\\LiveCap.exe",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "Loop Midi",
+      "category": "MIDI et utilitaires",
+      "path": "C:\\Program Files (x86)\\Tobias Erichsen\\loopMIDI\\loopMIDI.exe",
+      "delaySeconds": 4,
+      "enabled": false
+    },
+    {
+      "name": "Midi-OX",
+      "category": "MIDI et utilitaires",
+      "path": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\MIDI-OX.lnk",
+      "delaySeconds": 1,
+      "enabled": false
+    },
+    {
+      "name": "N.O.D.E",
+      "category": "MIDI et utilitaires",
+      "path": "%LOCALAPPDATA%\\ProducelyNODE\\current\\NODE.exe",
+      "delaySeconds": 10,
+      "enabled": false
+    },
+    {
+      "name": "A&H Midi TCP",
+      "category": "MIDI et utilitaires",
+      "path": "C:\\Program Files (x86)\\Allen & Heath\\Allen and Heath MIDI Control\\Allen and Heath MIDI Control.exe",
+      "delaySeconds": 1,
+      "enabled": false
+    },
+    {
+      "name": "Nuendo14",
+      "category": "DAW",
+      "path": "C:\\Program Files\\Steinberg\\Nuendo 14\\Nuendo14.exe",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "Live 12",
+      "category": "DAW",
+      "path": "C:\\ProgramData\\Ableton\\Live 12 Suite\\Program\\Ableton Live 12 Suite.exe",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "SQ MixPad",
+      "category": "Consoles",
+      "path": "C:\\Program Files\\Allen & Heath\\SQ MixPad 1.6.1\\SQ MixPad.exe",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "LcpVirtualDongleLauncher",
+      "category": "Mesure",
+      "path": "%LOCALAPPDATA%\\LcpVirtualDongle\\V1\\LcpVirtualDongleLauncher.exe",
+      "delaySeconds": 0,
+      "enabled": false
+    },
+    {
+      "name": "Live-Capture Pro (dongle virtuel)",
+      "category": "Mesure",
+      "path": "%APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Live-Capture Pro - Dongle virtuel\\Live-Capture Pro (dongle virtuel).lnk",
+      "delaySeconds": 0,
+      "enabled": false
+    }
+  ],
+  "processes": [
+    {
+      "name": "OneDrive",
+      "displayName": "OneDrive",
+      "action": "Close",
+      "enabled": false,
+      "description": "Synchronisation Microsoft OneDrive. Peut consommer disque, reseau et CPU."
+    },
+    {
+      "name": "cloud-drive-daemon",
+      "displayName": "Synology Drive",
+      "action": "Close",
+      "enabled": false,
+      "description": "Synology Drive. Peut synchroniser en arriere-plan et charger le disque/reseau."
+    },
+    {
+      "name": "cloud-drive-ui",
+      "displayName": "Synology Drive UI",
+      "action": "Close",
+      "enabled": false,
+      "description": "Interface Synology Drive. A fermer avec le daemon si tu coupes la synchro."
+    },
+    {
+      "name": "PhoneExperienceHost",
+      "displayName": "Mobile connecte Windows",
+      "action": "Close",
+      "enabled": false,
+      "description": "Application Lien avec Windows / telephone. Inutile pour la plupart des sessions audio."
+    },
+    {
+      "name": "CrossDeviceService",
+      "displayName": "Lien avec telephone Windows",
+      "action": "Close",
+      "enabled": false,
+      "description": "Service d'experience multi-appareils Windows. Peut etre ferme si le telephone n'est pas utile."
+    },
+    {
+      "name": "CrossDeviceResume",
+      "displayName": "Reprise lien telephone Windows",
+      "action": "Close",
+      "enabled": false,
+      "description": "Reprise multi-appareils Windows. Peu utile en session audio."
+    },
+    {
+      "name": "logioptionsplus_agent",
+      "displayName": "Logi Options Agent",
+      "action": "Close",
+      "enabled": false,
+      "description": "Agent Logitech Options. A tester si tes raccourcis souris/clavier ne sont pas critiques."
+    },
+    {
+      "name": "ChatGPT",
+      "displayName": "ChatGPT",
+      "action": "Close",
+      "enabled": false,
+      "description": "Application ChatGPT. Peut consommer beaucoup de memoire/CPU si ouverte."
+    },
+    {
+      "name": "Codex",
+      "displayName": "Codex",
+      "action": "Close",
+      "enabled": false,
+      "description": "Application Codex. A fermer seulement si tu n'en as pas besoin pendant la session."
+    }
+  ],
+  "networkAdapters": [
+    {
+      "name": "Tailscale",
+      "displayName": "Tailscale",
+      "action": "Disable",
+      "enabled": false,
+      "description": "Adaptateur reseau Tailscale. Le desactiver isole ce tunnel pendant la session.",
+      "audioKeep": false
+    },
+    {
+      "name": "NordLynx",
+      "displayName": "NordLynx",
+      "action": "Disable",
+      "enabled": false,
+      "description": "Adaptateur NordVPN WireGuard. A desactiver si tu veux eviter le VPN.",
+      "audioKeep": false
+    },
+    {
+      "name": "Connexion au réseau local",
+      "displayName": "OpenVPN TAP",
+      "action": "Disable",
+      "enabled": false,
+      "description": "Adaptateur TAP OpenVPN. Peut etre desactive si aucun VPN OpenVPN n'est requis.",
+      "audioKeep": false
+    },
+    {
+      "name": "Connexion au réseau local 2",
+      "displayName": "NordVPN TAP",
+      "action": "Disable",
+      "enabled": false,
+      "description": "Adaptateur TAP NordVPN. Peut etre desactive si aucun VPN NordVPN n'est requis.",
+      "audioKeep": false
+    },
+    {
+      "name": "OpenVPN Connect DCO Adapter",
+      "displayName": "OpenVPN DCO",
+      "action": "Disable",
+      "enabled": false,
+      "description": "Adaptateur OpenVPN DCO. Peut etre desactive si aucun VPN OpenVPN n'est requis.",
+      "audioKeep": false
+    },
+    {
+      "name": "OpenVPN Data Channel Offload for NordVPN",
+      "displayName": "NordVPN DCO",
+      "action": "Disable",
+      "enabled": false,
+      "description": "Adaptateur NordVPN DCO. Peut etre desactive si aucun VPN NordVPN n'est requis.",
+      "audioKeep": false
+    },
+    {
+      "name": "Connexion réseau Bluetooth 2",
+      "displayName": "Bluetooth Network",
+      "action": "Disable",
+      "enabled": false,
+      "description": "Reseau Bluetooth. Peut etre desactive si aucun partage reseau Bluetooth n'est requis.",
+      "audioKeep": false
+    }
+  ],
+  "activeProfile": "Defaut",
+  "profiles": [
+    {
+      "name": "Defaut",
+      "audioPlanName": "Mode Audio",
+      "audioPlanGuid": "0155f4f8-4a69-4c09-9c16-62ee882a2e95",
+      "apps": [],
+      "services": [],
+      "processes": [],
+      "networkAdapters": []
+    }
+  ],
+  "windowsSecurity": {
+    "disableFirewall": false,
+    "disableDefenderRealtime": false,
+    "disableDefenderScheduledTasks": false,
+    "requireConfirmation": true
+  }
+}

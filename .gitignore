@@ -8,6 +8,9 @@ AudioLive_*.log
 # Etat de session local
 Audio-Live.state.json
 
+# Configuration propre a la machine (un exemple neutre reste versionne)
+Audio-Live.apps.json
+
 # Sauvegardes locales generees par le script ou Codex
 *.bak-*
 *.manualbak-*
@@ -25,3 +28,8 @@ delivery-test/
 .cache/
 cache/
 __pycache__/
+
+# Construction de l'installeur
+installer/build/
+installer/output/
+dist/
