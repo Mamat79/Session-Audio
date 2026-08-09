@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 1.0.0 - 2026-08-09
+
+- Premier installeur Windows de Session Audio.
+- Ajout d'un lanceur natif avec elevation administrateur et fermeture automatique.
+- Creation automatique des raccourcis Lancer, Restaurer et Configuration.
+- Conservation de la configuration et des journaux pendant les mises a jour.
+- Blocage de la desinstallation si `Audio-Live.state.json` indique une restauration en attente.
+- Separation de la configuration locale et de l'exemple publie dans Git.
+- Neutralisation systematique des options pare-feu et Defender dans une nouvelle installation.
+- Ajout d'un build reproductible et d'un test installation/simulation/desinstallation.
+
 ## 2026-07-13
 
 - Ajout d'une option pour suspendre temporairement les taches planifiees Microsoft Defender.

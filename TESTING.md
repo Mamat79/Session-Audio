@@ -16,6 +16,22 @@ Resultat :
 - JSON OK ;
 - simulation OK.
 
+## Test de l'installeur 1.0.0
+
+`Build-Installer.ps1 -Test` verifie automatiquement :
+
+- compilation du lanceur natif ;
+- compilation Inno Setup ;
+- installation silencieuse dans un dossier `%TEMP%` unique ;
+- presence des fichiers indispensables ;
+- syntaxe du script installe ;
+- configuration de securite sensible desactivee ;
+- simulation PowerShell 5.1 sans creation de snapshot ;
+- desinstallation silencieuse ;
+- suppression du dossier de test.
+
+Le build generique et le build personnel ont passe ce test le 2026-08-09.
+
 ## Tests a creer
 
 Tests PowerShell/Pester :

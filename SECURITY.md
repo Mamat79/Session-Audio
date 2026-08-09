@@ -12,6 +12,8 @@ Options disponibles :
 
 Ces options sont decochees par defaut et demandent confirmation avant lancement reel.
 
+L'installeur force aussi ces trois options a `false` dans toute nouvelle configuration distribuee, meme lorsqu'un build personnel reprend la liste locale des applications et profils.
+
 ## Restauration
 
 Avant application, Session Audio sauvegarde :
@@ -28,6 +30,7 @@ Le bouton `Restaurer` remet ces etats lorsque Windows autorise l'operation.
 - Microsoft Defender peut refuser une modification si une protection Windows l'empeche.
 - Session Audio ne force pas l'arret du service Defender protege par Windows ; il journalise les refus au lieu de pretendre que l'action a reussi.
 - En mode `-NoGui`, les options securite sensibles ne peuvent pas etre appliquees.
+- L'installeur et le lanceur ne sont pas signes par un certificat de signature de code. Windows SmartScreen peut donc afficher un avertissement tant qu'aucun certificat n'est configure.
 
 ## Recommandation
 

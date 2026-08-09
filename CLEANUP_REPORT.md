@@ -1,5 +1,14 @@
 # CLEANUP REPORT - Session Audio
 
+## Mise a jour du 2026-08-09
+
+- Le projet est maintenant un depot Git prive sur `main`.
+- `Audio-Live.apps.json` reste une configuration locale ignoree par Git.
+- `Audio-Live.apps.example.json` remplace la configuration machine dans les sources publiees.
+- Les anciens raccourcis `.lnk` figes ont ete remplaces par des raccourcis generes par l'installeur.
+- Les sorties `installer/build`, `installer/output` et `dist` sont regenerables et ignorees.
+- `Audio-Live.state.json` et les sauvegardes locales restent conserves hors Git.
+
 Date : 2026-07-11
 
 ## Perimetre
