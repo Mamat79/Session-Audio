@@ -19,6 +19,8 @@ param(
   [switch]$OpenConfig
 )
 
+$script:AppVersion = "1.0.0"
+
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
@@ -403,7 +405,7 @@ function New-DefaultConfig {
       [ordered]@{
         name = "N.O.D.E"
         category = "MIDI et utilitaires"
-        path = "C:\Users\mamat\AppData\Local\ProducelyNODE\current\NODE.exe"
+        path = "%LOCALAPPDATA%\ProducelyNODE\current\NODE.exe"
         delaySeconds = 10
         enabled = $false
       },
@@ -2239,7 +2241,7 @@ function Show-AppSelectionDialog {
   try { [System.Windows.Forms.Application]::EnableVisualStyles() } catch {}
 
   $form = New-Object System.Windows.Forms.Form
-  $form.Text = "Session Audio - By Mamat"
+  $form.Text = "Session Audio $script:AppVersion - By Mamat"
   $form.StartPosition = "CenterScreen"
   $form.Size = New-Object System.Drawing.Size(1040, 660)
   $form.MinimumSize = New-Object System.Drawing.Size(760, 480)
@@ -3591,6 +3593,9 @@ function Write-SessionPlanReport {
 
   Write-Log "=== RAPPORT SESSION AUDIO : $Mode ==="
 
+  # PowerShell 5.1 peut reduire une collection d'un element en objet scalaire.
+  $appList = @(ConvertTo-Array -Value $Apps)
+
   $plan = Get-Prop -InputObject $config -Name "audioPlan" -Default $null
   Write-Log ("Plan alimentation choisi : " + [string](Get-Prop -InputObject $plan -Name "name" -Default ""))
 
@@ -3598,8 +3603,8 @@ function Write-SessionPlanReport {
   $enabledProcesses = @(Get-ManagedProcessConfigs -Config $config | Where-Object { Test-EntryEnabled -Entry $_ -Default $false })
   $enabledAdapters = @(Get-ManagedNetworkAdapterConfigs -Config $config | Where-Object { Test-EntryEnabled -Entry $_ -Default $false })
 
-  Write-Log ("Logiciels selectionnes : " + @($Apps).Count)
-  foreach ($app in @($Apps)) {
+  Write-Log ("Logiciels selectionnes : " + $appList.Count)
+  foreach ($app in $appList) {
     Write-Log ("  - Lancer : " + [string](Get-Prop -InputObject $app -Name "name" -Default ""))
   }
 
@@ -3647,7 +3652,7 @@ try {
     return
   }
 
-  Write-Log "=== SESSION AUDIO ==="
+  Write-Log "=== SESSION AUDIO $script:AppVersion ==="
 
   if ($Restore) {
     Restore-Environment

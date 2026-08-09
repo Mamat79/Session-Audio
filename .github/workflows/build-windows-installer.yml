@@ -1,0 +1,30 @@
+name: Build Windows installer
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Inno Setup
+        shell: powershell
+        run: choco install innosetup --yes --no-progress
+
+      - name: Build and test
+        shell: powershell
+        run: .\Build-Installer.ps1 -Test
+
+      - name: Upload installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: Session-Audio-Windows
+          path: dist/*
+          if-no-files-found: error
